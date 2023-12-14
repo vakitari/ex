@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+        }
+        input[type="text"] {
+            width: 15%;
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .da{
+
+            height: 30px;
+            margin: 5px;
+            font-size: 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<form th:action="@{/register}"  th:object="${user}" method="post">
+    <label>login</label>
+    <input type="text" th:field="*{username}" >
+    <label>pass</label>
+        <input type="text" th:field="*{password}">
+    <input type="hidden" name="_csrf" value="${_csrf.token}">
+    <button  class="da"  type="submit">Зарегестрироваться</button>
+
+</form>
+</body>
+</html>

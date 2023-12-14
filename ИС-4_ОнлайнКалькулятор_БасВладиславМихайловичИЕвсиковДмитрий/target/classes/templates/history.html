@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Application</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .ds {
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 260px;
+            margin: 0 auto;
+            background-color: #fff;
+        }
+
+        input[type="text"] {
+            width: 87%;
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .dab {
+            width: 50px;
+            height: 50px;
+            margin: 5px;
+            font-size: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .da{
+            width: 80px;
+            height: 30px;
+            margin: 5px;
+            font-size: 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .sas{
+            padding: 3px;
+            width: 50px;
+            height: 50px;
+            margin: 5px;
+            font-size: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+
+        }
+    </style>
+</head>
+<body>
+
+
+
+
+
+<form th:action="@{/his/home}">
+    <button class="da" type="submit">вернуться</button>
+</form>
+
+<table>
+    <thead>
+    <tr>
+        <th>история</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="history : ${his}"></td>
+        <td th:text="${history.prim}"></td>
+    </tr>
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+<!--<form th:action="@{/api/history/add}" th:object="${history}" method="post">
+    <label>prim</label>
+    <input type="text" th:field="*{prim}">
+    <label>user id</label>
+    <input type="text" th:field="*{user.id}">
+    <button  type="submit">добавить</button>
+<form th:action="@{/api/user/update}" th:object="${user}" method="post">
+
+  <input type="hidden" th:field="*{id}">
+  <label>login</label>
+  <input  type="text" th:field="*{login}">
+  <label>pass</label>
+  <input type="text" th:field="*{pass}"><button type="submit">save</button>
+
+
+
+</form>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>prim</th>
+        <th>user</th>
+        <th></th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="history : ${histories}"></td>
+        <td th:text="${history.id}"></td>
+        <td th:text="${history.prim}"></td>
+        <td th:text="${history.user.login}"></td>
+        <td th:href="@{/api/history/edit(id=${history.id})}">
+            <a th:href="@{/api/history/edit(id=${history.id})}">edit</a>
+            <a th:href="@{/api/history/del(id=${history.id})}">delete</a>
+        </td>
+
+
+    </tr>
+    </tbody>
+</table>
+</form>-->
+</body>
+</html>

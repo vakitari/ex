@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .ds {
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 260px;
+            margin: 0 auto;
+            background-color: #fff;
+        }
+
+        input[type="text"] {
+            width: 87%;
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .dab {
+            width: 50px;
+            height: 50px;
+            margin: 5px;
+            font-size: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .da{
+            width: 80px;
+            height: 30px;
+            margin: 5px;
+            font-size: 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .sas{
+            padding: 3px;
+            width: 50px;
+            height: 50px;
+            margin: 5px;
+            font-size: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+
+        }
+    </style>
+</head>
+<body>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>pass</th>
+        <th>userN</th>
+        <th></th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="history : ${users}"></td>
+        <td th:text="${history.id}"></td>
+        <td th:text="${history.password}"></td>
+        <td th:text="${history.username}"></td>
+    </tr>
+    </tbody>
+</table>
+<a th:href="@{/admin/editUser}"> отредактировать себя</a>
+</body>
+</html>

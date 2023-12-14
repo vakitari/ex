@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Простой калькулятор</title>
+    <meta charset="UTF-8">
+
+</head>
+<style>
+    body {
+        background-color: #f0f0f0;
+        font-family: Arial, sans-serif;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    .ds {
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 260px;
+        margin: 0 auto;
+        background-color: #fff;
+    }
+
+    input[type="text"] {
+        width: 87%;
+        margin-bottom: 10px;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .dab {
+        width: 50px;
+        height: 50px;
+        margin: 5px;
+        font-size: 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .da{
+        width: 100px;
+        height: 30px;
+        margin: 5px;
+        font-size: 15px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+
+    }
+    .momi{
+        position: absolute;
+    }
+    .sas{
+        padding: 3px;
+        width: 50px;
+        height: 50px;
+        margin: 5px;
+        font-size: 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+
+    }
+</style>
+<body >
+<div class="momi">
+<form th:action="@{/logout}"  method="post">
+    <input type="hidden" name="${_csrf.parameterName}"  value="${_csrf.token}" />
+    <button type="submit" class="da" name="button-reg">Выход</button>
+</form>
+<form th:action="@{/his}"  method="get">
+    <button class="da" type="submit">История</button>
+</form>
+<form  th:if="${#authentication.principal.getUsername() == null}" th:action="@{/register}"  method="get">
+    <button class="da" type="submit">Регистрация</button>
+</form>
+<form  th:if="${#authentication.principal.getUsername() == null}" th:action="@{/login}"  method="get">
+    <button class="da" type="submit">Авторизация</button>
+</form>
+    <p sec:authorize="{hasRole('ROLE_ADMIN')}" ><a th:href="@{/create}">Создать пост</a> </p>
+</div>
+    <h1>Простой калькулятор</h1>
+    <form  th:action="@{/his/add}" th:object="${history}" class="ds" method="post" name="calculator">
+        <input th:if="${#authentication.principal.getUsername() != null}" type="hidden" th:attr="value=${user.getId()}"  name="usr.id">
+
+        <input  type="text"  id="display" th:attr="value=${his?.prim}"  name="prim">
+
+        <br>
+        <input type="button" class="dab" value="1" onclick="calculator.display.value += '1'">
+        <input type="button" class="dab" value="2" onclick="calculator.display.value += '2'">
+        <input type="button" class="dab" value="3" onclick="calculator.display.value += '3'">
+        <input type="button" class="dab" value="/" onclick="calculator.display.value += '/'">
+        <br>
+        <input type="button" class="dab" value="4" onclick="calculator.display.value += '4'">
+        <input type="button" class="dab" value="5" onclick="calculator.display.value += '5'">
+        <input type="button" class="dab" value="6" onclick="calculator.display.value += '6'">
+        <input type="button" class="dab" value="-" onclick="calculator.display.value += '-'">
+        <br>
+        <input type="button" class="dab" value="7" onclick="calculator.display.value += '7'">
+        <input type="button" class="dab" value="8" onclick="calculator.display.value += '8'">
+        <input type="button" class="dab" value="9" onclick="calculator.display.value += '9'">
+        <input type="button" class="dab" value="+" onclick="calculator.display.value += '+'">
+        <br>
+        <input type="button" class="dab" value="C" onclick="calculator.display.value = ''">
+        <input type="button" class="dab" value="0" onclick="calculator.display.value += '0'">
+        <input type="button" class="dab" value="*" onclick="calculator.display.value += '*'">
+        <button  th:if="${user.getId() != null}" type="submit" class="sas" value="=" onclick="calculator.display.value = eval(calculator.display.value)">=</button>
+        <input th:if="${user.getId() == null}" type="button" class="sas" value="=" onclick="calculator.display.value = eval(calculator.display.value)">
+
+
+    </form>
+</body>
+</html>
